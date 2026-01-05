@@ -1,0 +1,91 @@
+CREATE TABLE REPLY(
+	REPLY_ID INT PRIMARY KEY,
+	BOARD_ID INT NOT NULL,
+	MEMBER_ID INT NOT NULL,
+	REPLY_CONTENT VARCHAR(500) NOT NULL,
+	
+	CONSTRAINT FK_REPLY_BOARD
+		FOREIGN KEY(BOARD_ID)
+		REFERENCES BOARD(BOARD_ID)
+		ON DELETE CASCADE, /*게시글 삭제 시 댓글삭제*/
+		
+	CONSTRAINT FK_REPLY_MEMBER
+		FOREIGN KEY(MEMBER_ID)
+		REFERENCES MEMBER(MEMBER_ID)
+);
+
+CREATE SEQUENCE REPLY_ID_SEQ  /* REPLY_ID 시퀀스로 1부터 1씩 증가 */
+	START WITH 1
+	INCREMENT BY 1
+	NOCACHE
+	NOCYCLE;
+=============================================================
+-- 댓글 작성
+INSERT INTO REPLY(
+REPLY_ID,
+BOARD_ID,
+MEMBER_ID,
+REPLY_CONTENT
+)VALUES(REPLY_ID_SEQ.NEXTVAL,1,4,'재밌는데요?');
+============================================================
+-- [REPLY_LIST_OLDEST] 댓글 목록(오래된순)
+SELECT
+R.REPLY_ID,
+R.BOARD_ID,
+R.MEMBER_ID,
+CASE WHEN M.MEMBER_ROLE = 'WITHDRAWN' THEN '탈퇴한 회원' 
+ELSE M.MEMBER_NICKNAME END WRITER_NICKNAME, R.REPLY_CONTENT
+FROM REPLY R
+JOIN MEMBER M ON M.MEMBER_ID = R.MEMBER_ID
+WHERE R.BOARD_ID = 1
+ORDER BY R.REPLY_ID ASC;
+============================================================
+-- [REPLY_LIST_RECENT] 댓글 목록(최신순)- 이게 기본
+SELECT
+    R.REPLY_ID,
+    R.BOARD_ID,
+    R.MEMBER_ID,
+    CASE
+        WHEN M.MEMBER_ROLE = 'WITHDRAWN' THEN '탈퇴한 회원'
+        ELSE M.MEMBER_NICKNAME
+    END WRITER_NICKNAME,
+    R.REPLY_CONTENT
+FROM REPLY R
+JOIN MEMBER M ON M.MEMBER_ID = R.MEMBER_ID
+WHERE R.BOARD_ID = 1
+ORDER BY R.REPLY_ID DESC;
+============================================================
+-- [REPLY_UPDATE] 댓글 수정(본인만)
+UPDATE REPLY
+SET REPLY_CONTENT = '수정된 내용'
+WHERE REPLY_ID = 1
+AND MEMBER_ID = 4;
+============================================================
+-- [REPLY_ADMIN_DELETE] 관리자 삭제(실제 삭제 X, 내용만 변경)
+UPDATE REPLY R
+SET R.REPLY_CONTENT = '관리자에 의해 삭제된 댓글입니다.'
+WHERE R.REPLY_ID = 1
+AND EXISTS (
+SELECT 1
+FROM MEMBER M
+WHERE M.MEMBER_ID = 4 -- 요청자(관리자) ID
+AND M.MEMBER_ROLE = 'ADMIN'
+);
+
+============================================================
+-- 댓글 삭제 - 자기 자신 또는 ADMIN만!
+DELETE FROM REPLY R
+WHERE R.REPLY_ID = 1
+AND(R.MEMBER_ID = 4 
+OR EXISTS(
+SELECT 1 FROM MEMBER M
+WHERE M.MEMBER_ID = 4 
+AND M.MEMBER_ROLE = 'ADMIN'
+	)
+);
+============================================================
+SELECT * FROM REPLY;
+
+DROP TABLE REPLY;
+
+DROP SEQUENCE REPLY_ID_SEQ; /* REPLY_ID 시퀀스 드랍 */

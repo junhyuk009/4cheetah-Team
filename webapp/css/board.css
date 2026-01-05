@@ -1,0 +1,249 @@
+@charset "UTF-8";
+
+/* =========================================================
+   BOARD Page - Page Specific (NO Search UI duplication)
+   - 검색 UI(.board-search-box...)는 공용 style.css에서 관리
+   - 여기서는 레이아웃 + 리스트 카드 + 공지/인기 + 정렬 UI만
+========================================================= */
+
+/* =========================
+   Toolbar Layout (제목 + 액션 영역 배치)
+========================= */
+.board-toolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:14px;
+  margin-bottom:18px;
+  flex-wrap:wrap;
+}
+
+.board-title-wrap h3{
+  margin:0;
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:0.2px;
+}
+
+.board-title-wrap .board-sub{
+  margin:6px 0 0;
+  font-size:13px;
+  color:rgba(255,255,255,0.55);
+}
+
+.board-actions{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* =========================
+   Reset / Write Button
+   - 크기(height/padding/radius/font-size)는 공용 CSS가 관리
+   - 여기서는 "색/테두리/호버"만 담당
+========================= */
+.board-reset-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  border:1px solid rgba(255,255,255,0.18);
+  background:transparent;
+  color:rgba(255,255,255,0.72);
+  font-weight:800;
+  text-decoration:none;
+  transition:.18s ease;
+  white-space:nowrap;
+}
+
+.board-reset-btn:hover{
+  background:rgba(255,255,255,0.08);
+  border-color:rgba(255,255,255,0.28);
+  color:#fff;
+  transform:translateY(-1px);
+}
+
+/* 글작성 버튼(보드 전용이므로 여기 유지) */
+.board-write-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#e53637;
+  color:#fff !important;
+  font-weight:800;
+  border:1px solid rgba(229,54,55,0.55);
+  cursor:pointer;
+  text-decoration:none;
+  transition:.18s ease;
+  white-space:nowrap;
+}
+
+.board-write-btn:hover{
+  background:#ff4c4c;
+  color:#fff !important;
+  transform:translateY(-1px);
+  text-decoration:none;
+}
+
+/* =========================
+   List Cards
+========================= */
+.board-list{
+  margin-top:8px;
+}
+
+/* 카드 공통 */
+.board-item{
+  background:rgba(255,255,255,0.03);
+
+  border:none !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+
+  border-radius:14px;
+  overflow:hidden;
+  padding:14px 16px;
+  margin-bottom:10px;
+
+  cursor:pointer;
+  transform: translateZ(0);
+  background-clip: padding-box;
+
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+
+.board-item:hover{
+  transform:translateY(-3px);
+  box-shadow:
+    inset 0 0 0 1px rgba(229,54,55,0.22),
+    0 18px 42px rgba(0,0,0,0.38);
+}
+
+/* 공지/인기 강조 */
+.board-item.notice-item{
+  background:rgba(229,54,55,0.07);
+  box-shadow: inset 0 0 0 1px rgba(229,54,55,0.18);
+}
+
+.board-item.notice-item:hover{
+  box-shadow:
+    inset 0 0 0 1px rgba(229,54,55,0.30),
+    0 18px 42px rgba(0,0,0,0.38);
+}
+
+.board-item.popular-item{
+  background:rgba(229,54,55,0.045);
+}
+
+/* 제목 */
+.board-title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.board-title a{
+  color:#fff;
+  font-size:15px;
+  font-weight:900;
+  line-height:1.35;
+  letter-spacing:0.2px;
+
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+
+  text-decoration:none;
+}
+
+.board-title a:hover{
+  color:#e53637;
+  text-decoration:none;
+}
+
+/* 공지 배지 */
+.notice-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:3px 10px;
+  border-radius:999px;
+  background:rgba(229,54,55,0.95);
+  color:#fff;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:0.4px;
+  flex-shrink:0;
+}
+
+/* 메타 */
+.board-meta{
+  margin-top:8px;
+  font-size:12px;
+  color:rgba(255,255,255,0.62);
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.board-meta i{
+  color:rgba(255,255,255,0.60);
+}
+
+/* 비어있음 안내 */
+.board-search-empty{
+  margin-top:80px;
+  text-align:center;
+  font-size:16px;
+  color:#b7b7b7;
+  letter-spacing:0.5px;
+}
+
+/* =========================
+   (옵션) 정렬 UI - 유지용
+========================= */
+.board-header{ position:relative; }
+
+.board-header-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  justify-content:flex-end;
+  margin-bottom:24px;
+}
+
+.board-sort-box{
+  position:relative;
+  z-index:20;
+}
+
+/* 기존: .sort-selected, .sort-list 전역 */
+.board-sort-box .sort-selected{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.3);
+  color:#fff;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:13px;
+}
+
+.board-sort-box .sort-list{
+  position:absolute;
+  top:100%;
+  right:0;
+  z-index:30;
+}
+
+.board-sort-box .sort-list li{
+  padding:8px 14px;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+.board-sort-box .sort-list li:hover{
+  background:rgba(255,255,255,0.08);
+}

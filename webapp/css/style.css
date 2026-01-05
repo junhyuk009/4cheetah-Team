@@ -1,0 +1,1565 @@
+/******************************************************************
+  Theme Name: Anime
+  Description: Anime video template
+  Author: Colorlib
+  Version: 1.0
+******************************************************************/
+
+/*------------------------------------------------------------------
+[Table of contents]
+1. Template default CSS
+2. Helper Css
+3. Header Section (AniMale CLEAN)
+4. Product Section
+5. Breadcrumb
+6. Footer
+7. Search UI (AniMale)
+8. Anime List Sort
+9. Responsive
+------------------------------------------------------------------*/
+
+/* =========================
+   1. Template default CSS
+========================= */
+html, body {
+  height: 100%;
+  font-family: "Mulish", sans-serif;
+  background: #0b0c2a;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+p {
+  font-size: 15px;
+  color: #b7b7b7;
+  line-height: 25px;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+ul, ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* =========================
+   2. Helper Css
+========================= */
+.section-title h4 {
+  color: #ffffff;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding-left: 20px;
+  position: relative;
+}
+
+.section-title h4:after {
+  position: absolute;
+  left: 0;
+  top: -6px;
+  height: 32px;
+  width: 4px;
+  background: #e53637;
+  content: "";
+}
+
+.spad {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+/* 공통 set-bg */
+.set-bg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* 애니 카드 전용: 포스터는 contain */
+.product__item__pic.set-bg {
+  background-size: contain;
+  background-color: #070720;
+}
+
+/* =========================
+   3. Header Section (AniMale CLEAN)
+========================= */
+
+/* 헤더 기본 */
+.header{
+  --header-h: 58px;
+  background: #070720;
+  min-height: var(--header-h);
+  overflow: visible;
+  position: relative;
+  z-index: 9999;
+}
+
+/* bootstrap row 정렬: center 고정 */
+.header .row{
+  min-height: var(--header-h);
+  align-items: center !important;
+}
+
+/* 로고 */
+.header__logo{
+  height: var(--header-h);
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.header__logo img{
+  display: block;
+  width: auto;
+  height: auto;
+  max-height: 40px;     /* 로고 세로 크기 */
+  max-width: 130px;     /* 로고 가로 존재감 */
+  object-fit: contain;
+}
+
+/* 메뉴 */
+.header__menu{
+  display: flex;
+  justify-content: center;
+}
+
+.header__menu ul{
+  display: flex;
+  gap: 24px;            /* 메뉴 간격 */
+}
+
+.header__menu ul li a{
+  font-size: 15px;
+  font-weight: 700;
+  color: #b7b7b7;
+  padding: 0 18px;
+  line-height: var(--header-h); /* 세로 중앙 정렬 핵심 */
+  display: block;
+}
+
+.header__menu ul li.active a{
+  background: #e53637;
+  color: #ffffff;
+}
+
+/* 우측 영역: 한 줄 정렬 */
+.header__right{
+  height: var(--header-h);
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  text-align: right;
+}
+
+.header__right a{
+  font-size: 18px;
+  margin-left: 0; /* gap으로만 간격 관리 */
+}
+
+/* 아이콘 묶음 */
+.header__right__icons{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 로그아웃 텍스트 더 작고 덜 튀게 */
+.logout-link{
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);  /* 기본은 은은하게 */
+  margin-top: 0 !important;
+  line-height: 1;
+}
+
+.logout-link:hover{
+  color: #e53637;
+  text-decoration: underline;
+}
+
+/* (옵션) header-logout-text 클래스 쓰는 경우 */
+.header-logout-text{
+  background: none !important;
+  padding: 0 !important;
+  color: #e53637 !important;
+  font-size: 13px !important;
+  font-weight: 600;
+  line-height: 1 !important;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.header-logout-text:hover{
+  color: #ff4c4c !important;
+  text-decoration: underline;
+}
+
+/* 검색 아이콘 클릭 가로채지 않게 */
+.icon_search,
+.icon_search::before{
+  pointer-events: none;
+}
+#searchToggle{
+  pointer-events: auto;
+}
+
+/* =========================
+   4. Product Section / Page
+========================= */
+.product-page{
+  padding-top: 60px;
+}
+
+.product__item{
+  margin-bottom: 30px;
+}
+
+.product__item__pic{
+  height: 325px;
+  border-radius: 5px;
+}
+
+.product__item__text{
+  padding-top: 20px;
+}
+
+.product__item__text h5{
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* =========================
+   8. Anime List Sort
+========================= */
+.product__page__title{
+  margin-bottom: 30px;
+}
+
+.product__page__filter{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.product__page__filter p{
+  margin: 0;
+  font-size: 14px;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.product__page__filter .nice-select{
+  width: 150px;
+  background: #070720;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* =========================
+   Sort Box FINAL FIX (공용)
+========================= */
+.sort-selected{
+  background: #070720;
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sort-selected span,
+#sortText{
+  color: #ffffff !important;
+  font-size: 14px;
+}
+
+.sort-selected i{
+  color: #ffffff;
+}
+
+.sort-list{
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 150px;
+  background: #0b0c2a;
+  border: 1px solid rgba(255,255,255,0.25);
+  z-index: 20;
+  display: none;
+}
+
+.sort-list li{
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.sort-list li:hover{
+  background: #e53637;
+}
+
+/* =========================
+   5. Breadcrumb
+========================= */
+.breadcrumb-option{
+  padding-top: 35px;
+}
+
+.breadcrumb__links a{
+  color: #ffffff;
+}
+
+.breadcrumb__links span{
+  color: #b7b7b7;
+}
+
+/* =========================
+   7. Search UI (AniMale)
+========================= */
+.search-result-wrapper{
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-empty{
+  font-size: 16px;
+  color: #b7b7b7;
+  letter-spacing: 0.5px;
+}
+
+.board-search-empty{
+  margin-top: 80px;
+  text-align: center;
+  font-size: 16px;
+  color: #b7b7b7;
+  letter-spacing: 0.5px;
+}
+
+.search-reset{
+  margin-top: 10px;
+  text-align: right;
+}
+
+.search-reset button{
+  background: none;
+  border: none;
+  color: #e53637;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.search-reset button:hover{
+  text-decoration: underline;
+}
+
+/* Empty Message */
+.empty-message-wrap{
+  display: none;
+  margin: 40px 0 20px;
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #b7b7b7;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.empty-message-text{
+  color: #b7b7b7;
+  font-size: 14px;
+  text-align: center;
+}
+
+.empty-message{
+  margin-top: 60px;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #b7b7b7;
+  font-size: 14px;
+}
+
+/* Cash Charge page tweak */
+.cash-charge-page .spad{
+  padding-top: 40px;
+}
+
+/* =========================
+   Login Page FINAL (Clean)
+========================= */
+.normal-breadcrumb{
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center top;
+  position: relative;
+  z-index: 1;
+}
+
+.normal-breadcrumb::before{
+  pointer-events: none;
+}
+
+.normal-breadcrumb::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(5, 6, 30, 0.25),
+    rgba(5, 6, 30, 0.55)
+  );
+}
+
+.normal__breadcrumb__text{
+  position: relative;
+  z-index: 2;
+}
+
+.normal__breadcrumb__text h2{
+  font-size: 52px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.6);
+}
+
+.normal__breadcrumb__text p{
+  font-size: 18px;
+  opacity: 0.9;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.6);
+}
+
+.login.spad{
+  padding: 120px 0;
+}
+
+.login__form{
+  max-width: 420px;
+  margin: 0 auto;
+  background: #0b0c2a;
+  padding: 40px 35px;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.login__form h3{
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #e53637;
+}
+
+.login__form .input__item{
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.login__form .input__item input{
+  width: 100%;
+  height: 48px;
+  padding-left: 44px;
+  background: #1a1b3a;
+  border: 1px solid #2e2f5e;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.login__form .input__item span{
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9a9abf;
+  font-size: 16px;
+}
+
+.login__form .input__item input::placeholder{
+  color: #9a9abf;
+}
+
+.login__form .site-btn{
+  width: 100%;
+  height: 48px;
+  background: #e53637;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.login__form .site-btn:hover{
+  background: #ff4c4c;
+}
+
+.login-help{
+  margin-top: 16px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.login-help a{
+  color: #e53637;
+  margin: 0 10px;
+}
+
+.login-help a:hover{
+  text-decoration: underline;
+}
+
+.login-help .divider{
+  color: #555;
+}
+
+/* 로그인 Clean Style (Revert) */
+.login-box-clean{
+  background: transparent;
+  padding: 20px 0;
+}
+
+.login-title{
+  font-family: 'Oswald', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.login-input{
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.login-input i{
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  transform: translateY(-50%);
+  color: #b7b7b7;
+  font-size: 16px;
+}
+
+.login-input input{
+  width: 100%;
+  height: 52px;
+  padding-left: 48px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  background: #ffffff;
+  font-size: 15px;
+  color: #333;
+}
+
+/* 로그인 페이지 빨간 버튼 */
+.login-btn-full{
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-radius: 30px;
+  background: #e53637;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.login-btn-full:hover{
+  background: #ff4c4c;
+}
+
+/* =========================
+   MyPage / Common Buttons
+========================= */
+a.mypage-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 48px;
+  background: #e53637;
+  color: #ffffff;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 0;
+  line-height: 1;
+  transition: background 0.2s ease;
+}
+
+a.mypage-btn:hover{
+  background: #ff4c4c;
+}
+
+label.mypage-btn{
+  display: inline-block;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background-color: #e53637;
+  color: #fff !important;
+  border-radius: 25px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+label.mypage-btn:hover{
+  background-color: #ff4c4c;
+}
+
+.login-links{
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.login-links a{
+  color: #ffffff;
+  opacity: 0.85;
+}
+
+.login-links span{
+  margin: 0 10px;
+  color: #888;
+}
+
+.login-links a:hover{
+  color: #e53637;
+}
+
+.btn-main{
+  display: block;
+  width: 100%;
+  background: #1c1f3a;
+  color: #fff;
+  border-radius: 30px;
+  padding: 12px 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.btn-sub{
+  display: block;
+  width: 100%;
+  background: #2a2e55;
+  color: #fff;
+  border-radius: 30px;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.mypage-menu a{
+  color: #ddd;
+  display: block;
+  padding: 8px 0;
+}
+
+.mypage-menu a:hover{
+  color: #fff;
+}
+
+.btn-danger-soft{
+  color: #e53637;
+  font-weight: 600;
+}
+
+.profile-btn{
+  margin-top: 12px;
+  width: 100%;
+  text-align: center;
+}
+
+/* =========================
+   My Posts (내 글 보기)
+========================= */
+.my-post-left{
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.my-post-left .section-title{
+  padding-left: 0;
+}
+
+.my-post-header{
+  margin-bottom: 30px;
+}
+
+.mypost-page-title h4{
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.my-post-filter select{
+  min-width: 160px;
+}
+
+.mypost-section-title{
+  position: relative;
+  padding: 10px 0 14px 14px;
+  margin: 20px 0 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.mypost-section-title::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 4px;
+  height: 16px;
+  background: #e53637;
+  border-radius: 2px;
+}
+
+.mypost-section-title h5{
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #b7b7b7;
+  letter-spacing: 0.5px;
+}
+
+.product__sidebar__comment__item{
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.product__sidebar__comment__item:last-child{
+  border-bottom: none;
+}
+
+.product__sidebar__comment__item h5 a{
+  color: #ffffff;
+  transition: color 0.2s ease;
+}
+
+.product__sidebar__comment__item h5 a:hover{
+  color: #e53637;
+}
+
+.product__sidebar__comment__item__text ul li{
+  font-size: 11px;
+  color: #8c8c8c;
+  text-transform: uppercase;
+}
+
+/* =========================
+   Scroll To Top
+========================= */
+.scroll-top{
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 42px;
+  height: 42px;
+  background: #e53637;
+  color: #ffffff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  cursor: pointer;
+  z-index: 999;
+  transition: background 0.2s;
+}
+
+.scroll-top:hover{
+  background: #ff4c4c;
+}
+
+/* =========================
+   6. Footer (Merged)
+========================= */
+.footer{
+  background: linear-gradient(180deg, #05061a 0%, #020314 100%);
+  padding: 36px 0 24px;
+  color: #bdbdbd;
+}
+
+.footer__top{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding-bottom: 12px;
+}
+
+.footer__logo img{
+  height: 80px;
+  width: auto;
+}
+
+.footer__text h5{
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.footer__text p{
+  font-size: 14px;
+  color: #9aa0b3;
+}
+
+.footer__info h5,
+.footer__contact h5{
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.footer__info ul li{
+  margin-bottom: 6px;
+}
+
+.footer__info ul li a{
+  color: #b7b7b7;
+  font-size: 14px;
+}
+
+.footer__info ul li a:hover{
+  color: #e53637;
+}
+
+.footer__contact p{
+  margin: 0;
+  font-size: 14px;
+  color: #b7b7b7;
+}
+
+.footer__bottom{
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: 3px;
+  padding-top: 3px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 11px;
+  color: #7f8599;
+}
+
+/* ✅ JSP에서 쓰는 footer__copy가 실제로 적용되게 */
+.footer__copy{
+  margin: 0;
+  line-height: 1.2;
+}
+
+.footer__directions{
+  margin-top: 16px;
+  text-align: center;
+}
+
+.footer__directions-btn{
+  border-radius: 999px;
+  padding: 10px 18px;
+}
+
+.footer-copy{
+  font-size: 14px;
+  color: #b7b7b7;
+  margin: 0;
+}
+
+.footer__copyright{
+  font-size: 13px;
+  color: #8c8c8c;
+}
+
+/* =========================
+   Dropdown 클릭 씹힘 FIX (override) + Glass Style
+========================= */
+
+/* 기준점 유지 */
+.header__menu li.dropdown{
+  position: relative;
+}
+
+/* display none/block -> opacity 방식 + Glass dropdown */
+.header__menu li.dropdown .dropdown-menu{
+  /* show/hide (hover fix) */
+  display: block !important;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  position: absolute;
+  /* ✅ 아래로 조금 내리기 (원하면 +6px, +10px로 조절) */
+  top: calc(100% + 2px) !important;
+  left: 0;
+
+  transform: translateY(8px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+
+  z-index: 10000 !important;
+
+  /* ✅ frosted glass (네이비 X, 중립 유리톤) */
+  min-width: 170px;
+  padding: 10px 0;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.18),
+    rgba(255,255,255,0.06)
+  ) !important;
+
+  border: 1px solid rgba(255,255,255,0.18) !important;
+  outline: 1px solid rgba(255,255,255,0.06);
+
+  box-shadow: 0 18px 45px rgba(0,0,0,0.45) !important;
+
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+
+  overflow: hidden;
+}
+
+/* ✅ 유리 반짝 하이라이트 레이어(선택이지만 효과 큼) */
+.header__menu li.dropdown .dropdown-menu::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 80% at 0% 0%,
+    rgba(255,255,255,0.12) 0%,
+    rgba(255,255,255,0.00) 55%
+  );
+}
+
+/* dropdown items */
+.header__menu li.dropdown .dropdown-menu li a{
+  position: relative; /* ::before 위에 글씨 나오게 */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+
+  color: rgba(255,255,255,0.90);
+  background: transparent;
+  text-decoration: none;
+
+  transition: background .15s ease, color .15s ease;
+}
+
+.header__menu li.dropdown .dropdown-menu li a:hover{
+  /* ✅ 유리톤 호버(빨강 ‘투명’ 포인트) */
+  background: rgba(229, 54, 55, 0.18);
+  color: #ffffff;
+}
+
+.header__menu li.dropdown .dropdown-menu li.active a{
+  color: #ffffff;
+  background: rgba(229, 54, 55, 0.26);
+}
+
+/* hover/focus 시 열기 */
+.header__menu li.dropdown:hover > .dropdown-menu,
+.header__menu li.dropdown:focus-within > .dropdown-menu{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* hover 끊김 방지용 bridge */
+.header__menu li.dropdown::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 10px;
+}
+
+/* 로그아웃 글씨 크기 덮어쓰기 */
+.header__right a.logout-link{
+  font-size: 14px;
+  line-height: 1;
+  color: rgba(255,255,255,0.65);
+}
+
+.header__right a.logout-link:hover{
+  color: #e53637;
+  text-decoration: underline;
+}
+
+
+/* =========================
+   9. Responsive
+========================= */
+@media only screen and (max-width: 767px) {
+  .header{ --header-h: 76px; }
+
+  .header__logo img{
+    max-height: 56px;
+    max-width: 160px;
+  }
+
+  .header__menu{
+    display: none;
+  }
+
+  .header-search-box{
+    right: -20px;
+    width: 220px;
+  }
+}
+
+/* =========================================================
+   HOME(Main) Polish v2
+========================================================= */
+.hero__slider .hero__items.set-bg{
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.hero__slider .hero__items.set-bg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,
+      rgba(5, 6, 30, 0.48) 0%,
+      rgba(5, 6, 30, 0.20) 52%,
+      rgba(5, 6, 30, 0.08) 100%
+    ),
+    linear-gradient(180deg,
+      rgba(0,0,0,0.05) 0%,
+      rgba(0,0,0,0.24) 100%
+    );
+  pointer-events:none;
+}
+
+.hero__slider .hero__items.set-bg .row{
+  position: relative;
+  z-index: 2;
+}
+
+.hero__slider .hero__items.set-bg:hover::before{
+  background:
+    linear-gradient(90deg,
+      rgba(5, 6, 30, 0.60) 0%,
+      rgba(5, 6, 30, 0.42) 52%,
+      rgba(5, 6, 30, 0.16) 100%
+    ),
+    linear-gradient(180deg,
+      rgba(0,0,0,0.12) 0%,
+      rgba(0,0,0,0.42) 100%
+    );
+}
+
+.hero__slider a.hero__items.set-bg,
+.hero__slider a.hero__items.set-bg:hover,
+.hero__slider a.hero__items.set-bg:focus,
+.hero__slider a.hero__items.set-bg:visited{
+  color: #ffffff !important;
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+.hero__text .label{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(229, 54, 55, 0.95);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.hero__text h2{
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.2px;
+  margin-top: 14px;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.55);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.hero__text p{
+  color: rgba(255,255,255,0.82);
+  text-shadow: 0 6px 18px rgba(0,0,0,0.55);
+  max-width: 520px;
+  margin-top: 10px;
+}
+
+.hero__cta-wrap{ margin-top: 18px; }
+
+.hero__cta{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(229,54,55,0.92);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff !important;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+  transition: transform .2s ease, background .2s ease;
+}
+
+.hero__slider a.hero__items.set-bg:hover .hero__cta{
+  transform: translateY(-1px);
+  background: rgba(255,76,76,0.95);
+}
+
+.hero__ctaLink{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(229,54,55,0.92);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff !important;
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+
+.hero__ctaLink:hover{
+  background: rgba(255,76,76,0.95);
+}
+
+/* =========================
+   HERO 텍스트 여백(왼쪽 붙는 문제 해결)
+========================= */
+.hero__slider .hero__items.set-bg .hero__text{
+  padding-left: clamp(18px, 3vw, 32px);
+  padding-right: clamp(12px, 2vw, 18px);
+  max-width: 560px;   /* 520~620 사이 취향값 */
+}
+
+.hero__slider .hero__items.set-bg .hero__text h2{
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  /* 한국어 단어 중간 끊김 최소화 */
+  word-break: keep-all;
+
+  /* 지원 브라우저에서 줄 균형 */
+  text-wrap: balance;
+
+  /* 그래도 너무 긴 문자열(공백 없는 긴 제목/특수문자 덩어리) 안전장치 */
+  overflow-wrap: break-word;
+}
+
+/* 모바일에서는 과하게 안 벌어지게 */
+@media (max-width: 575px){
+  .hero__slider .hero__items.set-bg .hero__text{
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+
+.home-anime-section{
+  position: relative;
+  background: linear-gradient(180deg, rgba(11,12,42,0) 0%, rgba(11,12,42,1) 130px);
+  padding-top: 80px;
+}
+
+.home-anime-section::before{
+  content:"";
+  position:absolute;
+  left:0; right:0; top:0;
+  height:1px;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0.14),
+    rgba(255,255,255,0)
+  );
+}
+
+.home-section-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:26px;
+}
+
+.home-section-head .section-title{ margin-bottom:0; }
+
+.home-section-head .section-sub{
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.2px;
+}
+
+.btn-viewall{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 16px;
+  border-radius:999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color:#fff !important;
+  text-decoration:none !important;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.btn-viewall:hover{
+  background: rgba(229,54,55,0.18);
+  border-color: rgba(229,54,55,0.55);
+  transform: translateY(-1px);
+}
+
+.home-anime-section .product__item{
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 12px 12px 16px;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.home-anime-section .product__item:hover{
+  transform: translateY(-4px);
+  border-color: rgba(229,54,55,0.35);
+  box-shadow: 0 18px 42px rgba(0,0,0,0.38);
+}
+
+.home-anime-section .product__item__pic{
+  border-radius: 12px;
+  height: 330px;
+  background-color: #070720;
+}
+
+.home-anime-section .anime-meta{
+  display:flex;
+  gap:8px;
+  margin-bottom:10px;
+}
+
+.home-anime-section .anime-meta li{
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.home-anime-section .anime-meta li.badge-q{
+  color:#ffffff;
+  background: rgba(229,54,55,0.16);
+  border-color: rgba(229,54,55,0.35);
+}
+
+.home-anime-section .anime-title a{
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.35;
+  letter-spacing: 0.2px;
+  opacity: 0.95;
+  color:#fff !important;
+  transition: color .15s ease, opacity .15s ease;
+}
+
+/* =========================
+   AniMale Unified Search UI
+   - anime.jsp / board.jsp / news.jsp 공용
+========================= */
+:root{
+  --am-search-h: 42px;
+  --am-search-radius: 25px;
+  --am-search-font: 13px;
+
+  /* glass tone (anime 카드 톤) */
+  --am-search-bg: rgba(11, 12, 42, 0.72);
+  --am-search-border: rgba(255,255,255,0.14);
+
+  --am-accent: #e53637;
+}
+
+/* 검색 라인 정렬(페이지별 래퍼) */
+.anime-search-wrapper,
+.news-search-row{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.news-search-wrap{
+  margin-bottom: 22px;
+}
+
+/* 모바일에서는 왼쪽 정렬 */
+@media (max-width: 991px){
+  .anime-search-wrapper,
+  .news-search-row{
+    justify-content: flex-start;
+  }
+}
+
+/* =========================
+   Search Box (pill)
+========================= */
+.anime-search-box,
+.board-search-box,
+.news-search-box{
+  height: var(--am-search-h);
+  padding: 0 10px;
+  border-radius: var(--am-search-radius);
+  background: var(--am-search-bg);
+  border: 1px solid var(--am-search-border);
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  box-sizing: border-box;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* focus highlight */
+.anime-search-box:focus-within,
+.board-search-box:focus-within,
+.news-search-box:focus-within{
+  border-color: rgba(229,54,55,0.55);
+  box-shadow: 0 0 0 3px rgba(229,54,55,0.14);
+}
+
+/* select */
+.anime-search-box select,
+.board-search-box select,
+.news-search-box select{
+  min-width: 80px;   /* 기존보다 살짝 */
+  height: calc(var(--am-search-h) - 2px);
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: rgba(255,255,255,0.85);
+  font-size: var(--am-search-font);
+  font-weight: 700;
+  cursor: pointer;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* custom chevron */
+  padding: 0 26px 0 10px;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.70) 50%),
+    linear-gradient(135deg, rgba(255,255,255,0.70) 50%, transparent 50%);
+  background-position:
+    calc(100% - 12px) 50%,
+    calc(100% - 7px) 50%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+
+  box-sizing: border-box;
+}
+
+.anime-search-box select option,
+.board-search-box select option,
+.news-search-box select option{
+  background: #0b0c2a;
+  color: #fff;
+  font-size: var(--am-search-font);
+}
+
+/* input */
+.anime-search-box input,
+.board-search-box input,
+.news-search-box input[type="text"]{
+  height: calc(var(--am-search-h) - 2px);
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: rgba(255,255,255,0.9);
+  font-size: var(--am-search-font);
+  flex: 1;
+  min-width: 160px;
+
+  box-sizing: border-box;
+}
+
+.anime-search-box input::placeholder,
+.board-search-box input::placeholder,
+.news-search-box input[type="text"]::placeholder{
+  color: rgba(255,255,255,0.55);
+}
+
+/* search button (돋보기) */
+.anime-search-box button,
+.board-search-box button,
+.news-search-box button{
+  width: calc(var(--am-search-h) - 12px);
+  height: calc(var(--am-search-h) - 12px);
+  border-radius: 50%;
+  padding: 0;
+
+  border: 1px solid var(--am-accent);
+  background: transparent;
+  color: var(--am-accent);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  -webkit-appearance: none;
+  appearance: none;
+
+  transition: background .15s ease, color .15s ease, transform .15s ease;
+}
+
+.anime-search-box button:hover,
+.board-search-box button:hover,
+.news-search-box button:hover{
+  background: var(--am-accent);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.anime-search-box button i,
+.board-search-box button i,
+.news-search-box button i{
+  font-size: 13px;
+}
+
+/* =========================
+   Search Line Action Buttons (Reset / Admin / Write)
+========================= */
+.anime-reset-btn,
+.board-reset-btn,
+.news-reset-btn,
+.btn-cancel,
+.anime-admin-btn,
+.news-admin-btn,
+.board-write-btn{
+  height: var(--am-search-h);
+  padding: 0 14px;
+  border-radius: var(--am-search-radius);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+
+  box-sizing: border-box;
+  text-decoration: none;
+  transition: background .15s ease, border-color .15s ease, transform .15s ease, color .15s ease;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ghost (전체보기/취소) */
+.anime-reset-btn,
+.board-reset-btn,
+.news-reset-btn,
+.btn-cancel{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.16);
+  color: rgba(255,255,255,0.82);
+  cursor: pointer;
+}
+
+.anime-reset-btn:hover,
+.board-reset-btn:hover,
+.news-reset-btn:hover,
+.btn-cancel:hover{
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.24);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* accent (관리/작성) */
+.anime-admin-btn,
+.news-admin-btn{
+  background: rgba(229,54,55,0.92);
+  border: 1px solid rgba(229,54,55,0.60);
+  color: #ffffff !important;
+}
+
+.anime-admin-btn:hover,
+.news-admin-btn:hover{
+  background: rgba(229,54,55,1);
+  border-color: rgba(229,54,55,0.80);
+  transform: translateY(-1px);
+}
+
+/* ✅ 시스템 드롭다운을 다크로 렌더링 유도 */
+.anime-search-box select,
+.board-search-box select,
+.news-search-box select{
+  color-scheme: dark;
+}
+
+/* 모바일: input 최소폭 축소 */
+@media (max-width: 575px){
+  .anime-search-box input,
+  .board-search-box input,
+  .news-search-box input[type="text"]{
+    min-width: 120px;
+  }
+}
+
