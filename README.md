@@ -5,9 +5,9 @@ Java MVC 기반 애니메이션 커뮤니티 웹 프로젝트
 
 ---
 
-##  프로젝트 개요
+## 📌 프로젝트 개요
 
-**ANIMale**은 애니메이션 정보를 중심으로  
+'ANIMale'은 애니메이션 정보를 중심으로  
 회원, 게시판, 뉴스, 애니 리스트, 결제, 이메일 인증 기능을 제공하는  
 Java Servlet/JSP 기반 웹 커뮤니티 서비스입니다.
 
@@ -15,19 +15,19 @@ Java Servlet/JSP 기반 웹 커뮤니티 서비스입니다.
 - MVC 패턴 적용
 - FrontController(`*.do`) 구조
 - Oracle DB 연동
-- AJAX 비동기 처리 포함
+- 프론트 페이지 비동기 처리 적용
 
 ---
 
 ## 🛠 개발 환경
 
-- **Language** : Java 11  
-- **Server** : Apache Tomcat 9  
-- **DB** : Oracle  
-- **IDE** : Eclipse  
-- **Build** : Maven  
-- **View** : JSP / JSTL / JavaScript / jQuery  
-- **Library**
+- 🧩 Language : Java 11  
+- 🐱 Server : Apache Tomcat 9  
+- 🗄️ DB : Oracle  
+- 🧰 IDE : Eclipse  
+- 🧱 Build : Maven  
+- 🖥️ View : JSP / JSTL / JavaScript / jQuery  
+- 📦 Library
   - gson
   - jstl
   - mail
@@ -35,17 +35,17 @@ Java Servlet/JSP 기반 웹 커뮤니티 서비스입니다.
 
 ---
 
-##  프로젝트 구조
+## 🗂 프로젝트 구조
 
 ### src/main/java
-- **controller**
+- controller
   - anime / animepage
   - board / boardpage
   - member / memberpage
   - news / newspage
   - common
   - util
-- **model**
+- model
   - dao
   - dto
   - common
@@ -60,7 +60,7 @@ Java Servlet/JSP 기반 웹 커뮤니티 서비스입니다.
 
 ---
 
-##  컨트롤러 구조
+## 🧭 컨트롤러 구조
 
 ### FrontController
 - 모든 요청을 `*.do` 패턴으로 통합 처리
@@ -82,19 +82,19 @@ Java Servlet/JSP 기반 웹 커뮤니티 서비스입니다.
 
 ---
 
-##  주요 기능
+## ✨ 주요 기능
 
 ### 회원
 - 회원가입 / 로그인 / 로그아웃
 - 이메일 인증
 - 비밀번호 찾기 / 변경
-- 마이페이지
+- 마이페이지 (정보 수정 및 이미지 변경, 이미지와 닉네임 변경은 유료로 구현)
 - 회원 탈퇴
 
 ### 게시판
 - 게시글 CRUD
 - 댓글 CRUD
-- 게시글 좋아요 (AJAX)
+- 게시글 좋아요 (비동기처리)
 
 ### 뉴스
 - 뉴스 목록 / 상세 조회
@@ -111,7 +111,7 @@ Java Servlet/JSP 기반 웹 커뮤니티 서비스입니다.
 
 ---
 
-##  DB 구조
+## 🗄 DB 구조
 
 - MEMBER  
 - BOARD  
@@ -121,11 +121,11 @@ Java Servlet/JSP 기반 웹 커뮤니티 서비스입니다.
 - ANIME  
 - VOTE_CATEGORY  
 
-각 테이블은 **DAO / DTO 구조로 분리**하여 관리합니다.
+각 테이블은 DAO / DTO 구조로 분리하여 관리합니다.
 
 ---
 
-##  실행 방법
+## ▶ 실행 방법
 
 1. Oracle DB 테이블 생성  
    - 제공된 SQL 파일 실행
@@ -135,6 +135,6 @@ Java Servlet/JSP 기반 웹 커뮤니티 서비스입니다.
 
 ---
 
-##  참고
+## 📎 참고
 
-본 프로젝트는 **학습 및 포트폴리오 목적의 팀 프로젝트**입니다.
+본 프로젝트는 학습 및 포트폴리오 목적의 팀 프로젝트입니다.
